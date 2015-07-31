@@ -1,0 +1,26 @@
+{
+  "name": "sasslint",
+  "version": "0.0.1",
+  "description": "A Sass linter built in JavaScript.",
+  "main": "lib/Runner.js",
+  "bin": {
+    "sasslint": "bin/sasslint"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir lib --optional es7.classProperties",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Furnes <david@dfurnes.com>",
+  "license": "MIT",
+  "dependencies": {
+    "sasstree": "0.0.5",
+    "lodash": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel": "^5.5.6",
+    "babelify": "^6.1.3",
+    "browserify": "^9.0.3",
+    "watchify": "^3.3.1"
+  }
+}
