@@ -17,6 +17,7 @@
 
 .thing:before {
   content: 'Hi!';
+  border: none;
 }
 
 @media("screen") {

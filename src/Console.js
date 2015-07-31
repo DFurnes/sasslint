@@ -1,4 +1,5 @@
 import Runner from './Runner';
+import DefaultReporter from './Reporters/DefaultReporter';
 import fs from 'fs';
 import path from 'path';
 import program from 'commander';
@@ -42,7 +43,7 @@ if(program.bench) {
 }
 
 const runner = new Runner();
-const results = runner.lint(input, { bench: program.bench });
+const lints = runner.lint(input, { bench: program.bench });
 
 if(program.bench) {
     console.timeEnd('SassLint');
@@ -51,5 +52,5 @@ if(program.bench) {
 /**
  * Output the results.
  */
-console.log('Results:');
-console.log(util.inspect(results, {depth: null, colors: true}));
+const reporter = new DefaultReporter(lints, file);
+reporter.report();

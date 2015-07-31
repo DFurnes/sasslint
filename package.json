@@ -14,8 +14,9 @@
   "author": "David Furnes <david@dfurnes.com>",
   "license": "MIT",
   "dependencies": {
-    "sasstree": "0.0.5",
-    "lodash": "^3.3.1"
+    "chalk": "^1.1.0",
+    "lodash": "^3.3.1",
+    "sasstree": "0.0.5"
   },
   "devDependencies": {
     "babel": "^5.5.6",
