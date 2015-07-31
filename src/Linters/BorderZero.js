@@ -34,7 +34,8 @@ class BorderZero extends Linter {
             if(includes(node.value, 'none')) {
                 return {
                     error: '`border: 0` is preferred over `border: none`.',
-                    source: node.source
+                    severity: 'warning',
+                    source: node.source,
                 }
             }
         }
