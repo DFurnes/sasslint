@@ -1,6 +1,6 @@
 {
   "name": "sasslint",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Sass linter built in JavaScript.",
   "main": "lib/Runner.js",
   "bin": {
