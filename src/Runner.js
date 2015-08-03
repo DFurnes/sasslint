@@ -1,4 +1,5 @@
 import Parser from 'sasstree';
+import forEach from 'lodash/collection/forEach';
 
 import BorderZero from './Linters/BorderZero';
 
@@ -9,16 +10,23 @@ import BorderZero from './Linters/BorderZero';
  * the AST, and passing it to interested linters.
  */
 class Runner {
-    constructor() {
-        this.linters = [BorderZero];
+    constructor(config) {
+        // @TODO: Load these on demand.
+        const allLinters = {'BorderZero': BorderZero};
 
-        // Prepare linters
-        this.linters = this.linters.map((Linter) => {
-            const linter = new Linter();
-            linter.initialize();
+        this.linters = [];
 
-            return linter;
-        });
+        // Initialize linters specified in the config
+        if(config.rules) {
+            forEach(config.rules, (options, rule) => {
+                if(options.enabled && allLinters[rule]) {
+                    const linter = new allLinters[rule](options);
+                    linter.initialize();
+
+                    this.linters.push(linter);
+                }
+            });
+        }
     }
 
     /**

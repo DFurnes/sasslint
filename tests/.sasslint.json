@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "BorderZero": {
+      "enabled": true,
+      "convention": "0"
+    }
+  }
+}
