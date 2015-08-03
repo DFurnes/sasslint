@@ -21,7 +21,7 @@ class SpaceAfterPropertyColon extends Linter {
      */
     defaults = {
         severity: 'warning',
-        // @TODO: 'style': one_space, no_space, at_least_one_space, one_space_or_newline, or aligned
+        style: 'one_space',
     };
 
     run(node) {
@@ -34,8 +34,24 @@ class SpaceAfterPropertyColon extends Linter {
             }
         }
 
-        if(whitespaceChars !== 1) {
-            return this.error(node, 'Colon after property should be followed by one space.');
+        // @TODO: For full scss-lint compatibility, need "one_space_or_newline" and "aligned" options
+        switch(this.options.style) {
+            // There should be zero spaces between the colon & property value.
+            case 'no_space':
+                if(whitespaceChars !== 0) return this.error(node, 'Colon after property should be followed by no spaces.');
+                break;
+
+            // There should be exactly one space between the colon & property value.
+            case 'one_space':
+                if(whitespaceChars !== 1) return this.error(node, 'Colon after property should be followed by one space.');
+                break;
+
+            case 'at_least_one_space':
+                if(whitespaceChars < 1) return this.error(node, 'Colon after property should be followed by at least one space.');
+                break;
+
+            default:
+                return this.error(null, `Invalid option given for 'style'.`)
         }
 
 

@@ -46,7 +46,7 @@ class Linter {
             error: message,
             severity: this.options.severity,
             linter: this.name,
-            source: node.source,
+            source: (node ? node.source : {line: 0, column: 0}),
         }
     }
 
