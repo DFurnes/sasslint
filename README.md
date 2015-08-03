@@ -4,21 +4,12 @@
 
 SassTree is a JavaScript SCSS linter, built on [SassTree](https://github.com/DFurnes/sasstree).
 
+![screenshot](https://cloud.githubusercontent.com/assets/583202/9041746/cabdefbc-39d7-11e5-8e7f-b54a5b63a70b.png)
 
-### Usage
-As a Node module:
-```js
-var Runner = require('sasslint');
-var runner = new Runner();
-runner.lint('.test { color: red }');
+To install, run `npm install -g sasslint`.
 
-```
-
-From the command line:
-```sh
-npm install -g sasslint
-sasstree <INPUT_FILE>
-```
+### Configuration
+SassLint will recursively search for a `.sasslint.json` configuration file in parent directories of the file being linted (or a configuration file can be specified with the `--config` option). See the [example config](https://github.com/DFurnes/sasslint/blob/master/tests/.sasslint.json) for details.
 
 ### Development
 ```sh
