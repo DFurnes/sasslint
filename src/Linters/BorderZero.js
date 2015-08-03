@@ -35,7 +35,7 @@ class BorderZero extends Linter {
     run(node) {
         const bannedFormat = this.options.convention === '0' ? 'none' : '0';
 
-        if(BORDER_PROPERTIES.includes(node.property)) {
+        if(includes(BORDER_PROPERTIES, node.property)) {
             if(includes(node.value, bannedFormat)) {
                 return {
                     error: `'border: ${this.options.convention}' is preferred over 'border: ${bannedFormat}'.`,
