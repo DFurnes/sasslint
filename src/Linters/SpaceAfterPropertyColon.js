@@ -35,12 +35,7 @@ class SpaceAfterPropertyColon extends Linter {
         }
 
         if(whitespaceChars !== 1) {
-            return {
-                error: `Colon after property should be followed by one space.`,
-                severity: this.options.severity,
-                linter: 'SpaceAfterPropertyColon',
-                source: node.source,
-            }
+            return this.error(node, 'Colon after property should be followed by one space.');
         }
 
 

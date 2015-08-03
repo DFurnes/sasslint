@@ -24,7 +24,7 @@ class Runner {
         if(config.rules) {
             forEach(config.rules, (options, rule) => {
                 if(options.enabled && allLinters[rule]) {
-                    const linter = new allLinters[rule](options);
+                    const linter = new allLinters[rule](rule, options);
                     linter.initialize();
 
                     this.linters.push(linter);

@@ -20,7 +20,8 @@ class Linter {
      */
     defaults = {};
 
-    constructor(options = {}) {
+    constructor(name, options = {}) {
+        this.name = name;
         this.options = options;
     }
 
@@ -38,6 +39,15 @@ class Linter {
 
         // ...
 
+    }
+
+    error(node, message) {
+        return {
+            error: message,
+            severity: this.options.severity,
+            linter: this.name,
+            source: node.source,
+        }
     }
 
 }
