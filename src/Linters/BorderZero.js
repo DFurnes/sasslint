@@ -28,7 +28,8 @@ class BorderZero extends Linter {
      * @type {object}
      */
     defaults = {
-        convention: '0'
+        severity: 'warning',
+        convention: '0',
     };
 
     run(node) {
@@ -38,7 +39,7 @@ class BorderZero extends Linter {
             if(includes(node.value, bannedFormat)) {
                 return {
                     error: `'border: ${this.options.convention}' is preferred over 'border: ${bannedFormat}'.`,
-                    severity: 'warning',
+                    severity: this.options.severity,
                     source: node.source,
                 }
             }
