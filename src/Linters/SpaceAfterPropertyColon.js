@@ -6,7 +6,7 @@ import Linter from './Linter';
  * Properties should be formatted with a single space separating
  * the colon from the property's value.
  */
-class BorderZero extends Linter {
+class SpaceAfterPropertyColon extends Linter {
 
     /**
      * Types of nodes that this linter is interested in.
@@ -38,6 +38,7 @@ class BorderZero extends Linter {
             return {
                 error: `Colon after property should be followed by one space.`,
                 severity: this.options.severity,
+                linter: 'SpaceAfterPropertyColon',
                 source: node.source,
             }
         }
@@ -48,4 +49,4 @@ class BorderZero extends Linter {
 
 }
 
-export default BorderZero;
+export default SpaceAfterPropertyColon;

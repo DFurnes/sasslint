@@ -40,6 +40,7 @@ class BorderZero extends Linter {
                 return {
                     error: `'border: ${this.options.convention}' is preferred over 'border: ${bannedFormat}'.`,
                     severity: this.options.severity,
+                    linter: 'BorderZero',
                     source: node.source,
                 }
             }

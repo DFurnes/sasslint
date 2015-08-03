@@ -19,8 +19,9 @@ class DefaultReporter {
         this.lints.forEach(function(lint) {
             const lineRef = chalk.gray(`${lint.source.line}:${lint.source.column}`);
             const label = lint.severity === 'error' ? chalk.bold.red('error') : chalk.bold.yellow('warning');
+            const linter = chalk.gray(lint.linter);
 
-            t.push([lineRef, label, lint.error]);
+            t.push([lineRef, label, lint.error, linter]);
         });
         console.log(table(t));
 
