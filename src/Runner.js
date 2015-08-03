@@ -10,9 +10,15 @@ import BorderZero from './Linters/BorderZero';
  */
 class Runner {
     constructor() {
-
         this.linters = [BorderZero];
 
+        // Prepare linters
+        this.linters = this.linters.map((Linter) => {
+            const linter = new Linter();
+            linter.initialize();
+
+            return linter;
+        });
     }
 
     /**
@@ -39,9 +45,8 @@ class Runner {
         let lints = [];
 
         ast.walk((node) => {
-            this.linters.forEach((Linter) => {
-                if(Linter.isInterested(node)) {
-                    const linter = new Linter();
+            this.linters.forEach((linter) => {
+                if(linter.isInterested(node)) {
                     const result = linter.run(node);
 
                     if(result) {

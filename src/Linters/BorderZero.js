@@ -1,5 +1,13 @@
 import Linter from './Linter';
-import { includes } from 'lodash';
+import includes from 'lodash/collection/includes';
+
+const BORDER_PROPERTIES = [
+    'border',
+    'border-top',
+    'border-right',
+    'border-bottom',
+    'border-left',
+];
 
 /**
  * @class BorderZero
@@ -13,27 +21,23 @@ class BorderZero extends Linter {
      * @see https://github.com/DFurnes/sasstree/tree/master/src/Nodes
      * @type {Array}
      */
-    static nodeTypes = ['Declaration'];
+    nodeTypes = ['Declaration'];
 
     /**
      * Default options.
      * @type {object}
      */
-    static defaults = {
+    defaults = {
         convention: '0'
     };
 
-    constructor(options = {}) {
-        super(options);
-    }
-
     run(node) {
+        const bannedFormat = this.options.convention === '0' ? 'none' : '0';
 
-        // @TODO: This doesn't take into account `border-left`, etc.
-        if(node.property === 'border') {
-            if(includes(node.value, 'none')) {
+        if(BORDER_PROPERTIES.includes(node.property)) {
+            if(includes(node.value, bannedFormat)) {
                 return {
-                    error: '`border: 0` is preferred over `border: none`.',
+                    error: `'border: ${this.options.convention}' is preferred over 'border: ${bannedFormat}'.`,
                     severity: 'warning',
                     source: node.source,
                 }

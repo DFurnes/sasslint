@@ -1,3 +1,5 @@
+import setDefaults from 'lodash/object/defaults';
+
 /**
  * @class Linter
  *
@@ -10,19 +12,23 @@ class Linter {
      * @see https://github.com/DFurnes/sasstree/tree/master/src/Nodes
      * @type {Array}
      */
-    static nodeTypes = [];
+    nodeTypes = [];
 
     /**
      * Default options.
      * @type {object}
      */
-    static defaults = {};
+    defaults = {};
 
     constructor(options = {}) {
-
+        this.options = options;
     }
 
-    static isInterested(node) {
+    initialize() {
+        this.options = setDefaults(this.options, this.defaults);
+    }
+
+    isInterested(node) {
         return this.nodeTypes.some(function(nodeType) {
             return nodeType === node.type;
         });
