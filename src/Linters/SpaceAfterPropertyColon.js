@@ -25,8 +25,6 @@ class BorderZero extends Linter {
     };
 
     run(node) {
-        console.log(node);
-
         let whitespaceChars = 0;
         for(let i = 0; i < node.value.length; i++) {
             if(node.value[i] === ' ') {
