@@ -3,6 +3,9 @@
     "BorderZero": {
       "enabled": true,
       "convention": "0"
+    },
+    "SpaceAfterPropertyColon": {
+      "enabled": true
     }
   }
 }

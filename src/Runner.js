@@ -2,6 +2,7 @@ import Parser from 'sasstree';
 import forEach from 'lodash/collection/forEach';
 
 import BorderZero from './Linters/BorderZero';
+import SpaceAfterPropertyColon from './Linters/SpaceAfterPropertyColon';
 
 /**
  * @class Runner
@@ -12,7 +13,10 @@ import BorderZero from './Linters/BorderZero';
 class Runner {
     constructor(config) {
         // @TODO: Load these on demand.
-        const allLinters = {'BorderZero': BorderZero};
+        const allLinters = {
+            'BorderZero': BorderZero,
+            'SpaceAfterPropertyColon': SpaceAfterPropertyColon,
+        };
 
         this.linters = [];
 
