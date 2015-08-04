@@ -7,24 +7,31 @@ import table from 'text-table';
  */
 class DefaultReporter {
 
-    constructor(lints, file) {
-        this.lints = lints;
-        this.file = file;
+    constructor() {
+        this.lints = [];
     }
 
-    report() {
-        console.log(chalk.underline(path.basename(this.file) + ':'));
+    report(lints, file) {
+        if(lints.length === 0) return;
+
+        console.log(chalk.underline(path.basename(file) + ':'));
 
         let t = [];
-        this.lints.forEach(function(lint) {
+        lints.forEach(function(lint) {
             const lineRef = chalk.gray(`${lint.source.line}:${lint.source.column}`);
             const label = lint.severity === 'error' ? chalk.bold.red('error') : chalk.bold.yellow('warning');
             const linter = chalk.gray(lint.linter);
 
             t.push([lineRef, label, lint.error, linter]);
         });
-        console.log(table(t));
 
+        // Track lints for later summary.
+        this.lints = this.lints.concat(lints);
+
+        console.log(table(t));
+    }
+
+    summarize() {
         const errors = this.lints.filter((lint) => lint.severity === 'error');
         const warnings = this.lints.filter((lint) => lint.severity === 'warning');
 
@@ -37,7 +44,6 @@ class DefaultReporter {
 
         if(warnings.length) {
             footer += ', ' + warnings.length + ' warnings'
-
         }
 
         console.log(footer);

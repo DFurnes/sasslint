@@ -75,5 +75,6 @@ if(program.bench) {
 /**
  * Output the results.
  */
-const reporter = new DefaultReporter(lints, file);
-reporter.report();
+const reporter = new DefaultReporter();
+reporter.report(lints, file);
+reporter.summarize();
