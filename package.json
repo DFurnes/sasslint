@@ -8,8 +8,8 @@
   },
   "scripts": {
     "prepublish": "npm run build",
-    "build": "babel src --out-dir lib --optional es7.classProperties",
     "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir lib",
   },
   "author": "David Furnes <david@dfurnes.com>",
   "license": "MIT",

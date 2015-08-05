@@ -6,8 +6,6 @@ var path = require('path');
 if(fs.existsSync(path.join(__dirname, '..', 'lib/Runner.js'))) {
     require('../lib/Console');
 } else {
-    require('babel/register')({
-        optional: ['es7.classProperties']
-    });
+    require('babel/register');
     require('../src/Console');
 }
