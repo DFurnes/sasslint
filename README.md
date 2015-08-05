@@ -1,4 +1,4 @@
-# SassLint [![NPM Version](https://img.shields.io/npm/v/sasslint.svg)](https://www.npmjs.com/sasslint)
+# SassLint [![NPM Version](https://img.shields.io/npm/v/sasslint.svg)](https://www.npmjs.com/sasslint) [![wercker status](https://app.wercker.com/status/495b54c9f2897a85ca841aec75e18721/s/master "wercker status")](https://app.wercker.com/project/bykey/495b54c9f2897a85ca841aec75e18721)
 
 :construction: __Under construction! Not ready for public use.__ :construction:
 
