@@ -1,6 +1,7 @@
 import Parser from 'sasstree';
 import forEach from 'lodash/collection/forEach';
 
+import BangFormat from './Linters/BangFormat';
 import BorderZero from './Linters/BorderZero';
 import SpaceAfterPropertyColon from './Linters/SpaceAfterPropertyColon';
 
@@ -14,6 +15,7 @@ class Runner {
     constructor(config) {
         // @TODO: Load these on demand.
         const allLinters = {
+            'BangFormat': BangFormat,
             'BorderZero': BorderZero,
             'SpaceAfterPropertyColon': SpaceAfterPropertyColon,
         };

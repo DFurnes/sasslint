@@ -1,5 +1,8 @@
 {
   "rules": {
+    "BangFormat": {
+      "enabled": true
+    },
     "BorderZero": {
       "enabled": true,
       "convention": "0"
