@@ -59,11 +59,11 @@ class Runner {
         ast.walk((node) => {
             this.linters.forEach((linter) => {
                 if(linter.isInterested(node)) {
-                    const result = linter.run(node);
+                    linter.onLint = function(lint) {
+                        lints.push(lint);
+                    };
 
-                    if(result) {
-                        lints.push(result);
-                    }
+                    linter.run(node);
                 }
             });
 

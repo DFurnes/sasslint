@@ -23,6 +23,7 @@ class Linter {
     constructor(name, options = {}) {
         this.name = name;
         this.options = options;
+        this.onLint = function(lint) { /* ... */ };
     }
 
     initialize() {
@@ -42,12 +43,12 @@ class Linter {
     }
 
     error(node, message) {
-        return {
+        this.onLint({
             error: message,
             severity: this.options.severity,
             linter: this.name,
             source: (node ? node.source : {line: 0, column: 0}),
-        }
+        });
     }
 
 }
