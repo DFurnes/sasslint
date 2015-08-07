@@ -1,10 +1,15 @@
 #!/usr/bin/env node
 var fs = require('fs');
 var path = require('path');
+var chalk = require('chalk');
 
 // Determine whether to load src through Babel transpiler, or use pre-built version.
-if(fs.existsSync(path.join(__dirname, '..', 'lib/Runner.js'))) {
-    require('../lib/Console');
+if(fs.existsSync(path.join(__dirname, '..', 'lib/Console.js'))) {
+    try {
+        require('../lib/Console');
+    } catch(e) {
+        console.error(chalk.red.bold('❯ ') + e);
+    }
 } else {
     require('babel/register');
     require('../src/Console');
