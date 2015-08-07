@@ -1,10 +1,6 @@
 import Parser from 'sasstree';
 import forEach from 'lodash/collection/forEach';
 
-import BangFormat from './Linters/BangFormat';
-import BorderZero from './Linters/BorderZero';
-import SpaceAfterPropertyColon from './Linters/SpaceAfterPropertyColon';
-
 /**
  * @class Runner
  *
@@ -13,23 +9,22 @@ import SpaceAfterPropertyColon from './Linters/SpaceAfterPropertyColon';
  */
 class Runner {
     constructor(config) {
-        // @TODO: Load these on demand.
-        const allLinters = {
-            'BangFormat': BangFormat,
-            'BorderZero': BorderZero,
-            'SpaceAfterPropertyColon': SpaceAfterPropertyColon,
-        };
-
         this.linters = [];
 
         // Initialize linters specified in the config
         if(config.rules) {
             forEach(config.rules, (options, rule) => {
-                if(options.enabled && allLinters[rule]) {
-                    const linter = new allLinters[rule](rule, options);
-                    linter.initialize();
+                if(options.enabled) {
+                    // Find the linter...
+                    try {
+                        const Linter = require(`./Linters/${rule}`);
+                        const linter = new Linter(rule, options);
+                        linter.initialize();
 
-                    this.linters.push(linter);
+                        this.linters.push(linter);
+                    } catch(e) {
+                        throw new Error(`Cannot load linter "${rule}".`)
+                    }
                 }
             });
         }
