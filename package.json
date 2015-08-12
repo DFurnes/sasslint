@@ -12,6 +12,7 @@
     "test": "babel-tape-runner tests/**/*.js | tap-spec"
   },
   "author": "David Furnes <david@dfurnes.com>",
+  "repository": "DFurnes/sasslint",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.0",
