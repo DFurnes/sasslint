@@ -8,7 +8,7 @@ if(fs.existsSync(path.join(__dirname, '..', 'lib/Console.js'))) {
     try {
         require('../lib/Console');
     } catch(e) {
-        console.error(chalk.red.bold('❯ ') + e);
+        console.error(chalk.red.bold('❯ ') + e.name + ': ' + e.message);
     }
 } else {
     require('babel/register');

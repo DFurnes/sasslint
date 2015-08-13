@@ -1,4 +1,4 @@
-import Parser from 'sasstree';
+import sasstree from 'sasstree';
 import forEach from 'lodash/collection/forEach';
 
 /**
@@ -36,15 +36,12 @@ class Runner {
      * @param {object} options
      */
     lint(scss, options = {}) {
-        // Start a new SassTree parser
-        const parser = new Parser();
-
         if(options && options.bench) {
             console.time('SassTree');
         }
 
         // Get the AST for the given SCSS source
-        const ast = parser.parse(scss, { bench: options.bench });
+        const ast = sasstree.parse(scss, { bench: options.bench });
 
         if(options && options.bench) {
             console.timeEnd('SassTree');
