@@ -4,7 +4,7 @@
 
 SassTree is a JavaScript SCSS linter, built on [SassTree](https://github.com/DFurnes/sasstree).
 
-![screenshot](https://cloud.githubusercontent.com/assets/583202/9041746/cabdefbc-39d7-11e5-8e7f-b54a5b63a70b.png)
+<img width="528" alt="screenshot" src="https://cloud.githubusercontent.com/assets/583202/9266993/8a2390dc-4216-11e5-99d6-42779e208a2a.png">
 
 To install, run `npm install -g sasslint`.
 
