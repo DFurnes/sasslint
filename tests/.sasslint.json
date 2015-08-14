@@ -9,6 +9,9 @@
     },
     "SpaceAfterPropertyColon": {
       "enabled": true
+    },
+    "ZeroUnit": {
+      "enabled": true
     }
   }
 }
